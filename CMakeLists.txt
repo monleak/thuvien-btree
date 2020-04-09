@@ -23,7 +23,8 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${BT_CFLAGS}")
 # message(STATUS "BT_SRC: ${BT_SRC} \n RDLINE: ${BT_RDLINE_LIB} ${BT_RDLINE_FLAG}")
 
 add_library(bt STATIC ${BT_SRC})
-set(BT_LIBS bt ${BT_RDLINE_LIB} PARENT_SCOPE)
+set(BT_LIBS_LOCAL bt ${BT_RDLINE_LIB})
+set(BT_LIBS ${BT_LIBS_LOCAL} PARENT_SCOPE)
 
 if (ORIGINAL_EXECUTABLE)
   add_executable(bt-bin src-main/bt.c src-main/btcmd.c)
@@ -35,7 +36,7 @@ if (ORIGINAL_EXECUTABLE)
   add_executable(corrupt Testcases/corrupt.c)
 
   foreach (name bt-bin kcp btr bigt bigtdel corrupt)
-    target_link_libraries(${name} ${BT_LIBS})
+    target_link_libraries(${name} ${BT_LIBS_LOCAL})
   endforeach(name)
 
   add_subdirectory(samples)
