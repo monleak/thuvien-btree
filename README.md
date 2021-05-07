@@ -32,7 +32,7 @@ Lý do không biên dịch các công cụ này ở chế độ mặc định: V
 
 `int btcls(BTA *btact);    //Thoát B tree file`
 ```
-    thoát khỏi file B tree trỏ bởi con trỏ btact, nếu thành công sẽ trả về gía trị 0, khác 0 thì đã có lỗi xảy ra
+    đóng file B tree trỏ bởi con trỏ btact, nếu thành công sẽ trả về gía trị 0, khác 0 thì đã có lỗi xảy ra
 ```
 
 `int btins(BTA *btact, char *key, char *data, int dsize);    //Chèn key và data vào B tree`
